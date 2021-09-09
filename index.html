@@ -8,14 +8,25 @@
 </head>
 <body>
         <textarea name="content" id="editor" cols="30" rows="10"></textarea>
-    
+        <button type="submit" id="submit">Submit</button>
+        <div id="content"></div>
     
 <script src="ckeditor5-build-classic/ckeditor.js"></script>
 <script >
-    ClassicEditor
-    .create(document.querySelector("#editor"))
-    .catch(error => {
-        console.error(error)
+     let editor;
+
+ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .then( newEditor => {
+        editor = newEditor;
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+
+document.querySelector( '#submit' ).addEventListener( 'click', () => {
+    const editorData = editor.getData();
+    document.querySelector( '#content' ).innerHTML = editorData;
     });
 </script>
 </body>
