@@ -50,6 +50,7 @@
                 </tbody>
               </table>
         </div>
+        <p></p>
     
 
 <script >
@@ -59,18 +60,22 @@
         var objEditor1 = CKEDITOR.instances["editor1"];
         var data = objEditor1.getData();
             alert(data);
-            var paracount = (data.match(/<p>/g) || []).length;
-            var h1count = (data.match(/<h1>/g) || []).length;
-            var h2count = (data.match(/<h2>/g) || []).length;
-            var h3count = (data.match(/<h3>/g) || []).length; 
-            var totalheadings = h1count + h2count + h3count;             
-            console.log(paracount,h1count,h2count,h3count,totalheadings);    
-    document.querySelector( '#paraCnt' ).innerHTML =  paracount;  
+          
+      var parsed = new DOMParser().parseFromString(data, 'text/html');
+      const paragraphs = parsed.querySelectorAll('p');
+      const h1count = parsed.querySelectorAll('h1');
+      const h2count = parsed.querySelectorAll('h2');
+      const h3count = parsed.querySelectorAll('h3');
+      var totalheadings = h1count + h2count + h3count;
+      // console.log(paragraphs.length,headings.length);
+                             
+    document.querySelector( '#paraCnt' ).innerHTML = paragraphs.length ;  
     document.querySelector( '#headingCnt' ).innerHTML =  totalheadings; 
-    document.querySelector( '#h1Cnt' ).innerHTML =  h1count; 
-    document.querySelector( '#h2Cnt' ).innerHTML =  h2count;
-    document.querySelector( '#h3Cnt' ).innerHTML =  h3count;   
-    document.querySelector( '#content' ).innerHTML = objEditor1.getData();
+    document.querySelector( '#h1Cnt' ).innerHTML =  h1count.length; 
+    document.querySelector( '#h2Cnt' ).innerHTML =  h2count.length;
+    document.querySelector( '#h3Cnt' ).innerHTML =  h3count.length;
+    document.querySelector( '#content' ).innerHTML = data;   
+    
  } );
     
 
