@@ -66,7 +66,7 @@
       const h1count = parsed.querySelectorAll('h1');
       const h2count = parsed.querySelectorAll('h2');
       const h3count = parsed.querySelectorAll('h3');
-      var totalheadings = h1count + h2count + h3count;
+      var totalheadings = h1count.length + h2count.length + h3count.length;
       // console.log(paragraphs.length,headings.length);
                              
     document.querySelector( '#paraCnt' ).innerHTML = paragraphs.length ;  
