@@ -62,11 +62,30 @@
             alert(data);
           
       var parsed = new DOMParser().parseFromString(data, 'text/html');
+       
+    //  var arr = data.match( RegExp('</?(?:article|aside|bdi|command|'+
+    //         'details|dialog|summary|figure|figcaption|footer|header|hgroup|mark|'+
+    //         'meter|nav|progress|ruby|rt|rp|section|time|wbr|audio|'+
+    //         'video|source|embed|track|canvas|datalist|keygen|output|'+
+    //         '!--|!DOCTYPE|a|abbr|address|area|b|base|bdo|blockquote|body|'+
+    //         'br|button|canvas|caption|cite|code|col|colgroup|dd|del|dfn|div|'+
+    //         'dl|dt|em|embed|fieldset|figcaption|figure|footer|form|h1|h2|h3|h4|'+
+    //         'h5|h6|head|hr|html|i|iframe|img|input|ins|kdb|keygen|label|legend|'+
+    //         'li|link|map|menu|meta|noscript|object|ol|optgroup|option|p|param|'+
+    //         'pre|q|s|samp|script|select|small|source|span|strong|style|sub|'+
+    //         'sup|table|tbody|td|textarea|tfoot|th|thead|title|tr|u|ul|var|'+
+    //         'acronym|applet|basefont|big|center|dir|font|frame|'+
+    //         'frameset|noframes|strike|tt)(?:(?: [^<>]*)>|>?)', 'i')).length;
+    
+      // console.log(h1tag.length);
       const paragraphs = parsed.querySelectorAll('p');
+      const emcnt = parsed.querySelectorAll('em');
       const h1count = parsed.querySelectorAll('h1');
       const h2count = parsed.querySelectorAll('h2');
       const h3count = parsed.querySelectorAll('h3');
       var totalheadings = h1count.length + h2count.length + h3count.length;
+      const hrcnt = parsed.querySelectorAll('hr');
+       console.log(emcnt.length,hr.length);
       // console.log(paragraphs.length,headings.length);
                              
     document.querySelector( '#paraCnt' ).innerHTML = paragraphs.length ;  
